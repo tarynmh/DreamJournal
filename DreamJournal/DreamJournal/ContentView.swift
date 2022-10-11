@@ -36,21 +36,21 @@ struct ContentView: View {
     @State private var selectedCategory: Category = .neutral
     @Environment(\.managedObjectContext) private var viewContext
     
-//    @FetchRequest(entity: Task.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: false)]) private var allTasks: FetchedResults<Task>
-//
-//       private func saveDream() {
-//
-//           do {
-//               let task = Task(context: viewContext)
-//               task.title = title
-//               task.priority = selectedPriority.rawValue
-//               task.dateCreated = Date()
-//               try viewContext.save()
-//           } catch {
-//               print(error.localizedDescription)
-//           }
-//
-//       }
+    @FetchRequest(entity: Entry.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: false)]) private var allEntries: FetchedResults<Entry>
+
+       private func saveDream() {
+
+           do {
+               let entry = Entry(context: viewContext)
+               entry.title = title
+               entry.emotion = selectedCategory.rawValue
+               entry.date = Date()
+               try viewContext.save()
+           } catch {
+               print(error.localizedDescription)
+           }
+
+       }
     
 //    @FetchRequest(sortDescriptors: []) var dreams: FetchedResults<DreamJournalModel>
     
@@ -74,11 +74,11 @@ struct ContentView: View {
                 .foregroundColor(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius:10, style:.continuous))
                 
-//                List {
-//                    ForEach(allTasks) {
-//                        task in Text(task.title ?? "")
-//                    }
-//                }
+                List {
+                    ForEach(allEntries) {
+                        entry in Text(entry.title ?? "")
+                    }
+                }
                 
                 Spacer()
             }
