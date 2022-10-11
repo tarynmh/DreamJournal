@@ -66,7 +66,7 @@ struct ContentView: View {
                 }.pickerStyle(.segmented)
                 
                 Button("Save"){
-//                    saveDream()
+                    saveDream()
                 }
                 .padding(10)
                 .frame(maxWidth: .infinity)
