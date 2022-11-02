@@ -36,7 +36,7 @@ struct ContentView: View {
     @State private var selectedCategory: Category = .neutral
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(entity: Entry.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: false)]) private var allEntries: FetchedResults<Entry>
+    @FetchRequest(entity: Entry.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)]) private var allEntries: FetchedResults<Entry>
 
        private func saveDream() {
 
@@ -45,6 +45,7 @@ struct ContentView: View {
                entry.title = title
                entry.emotion = selectedCategory.rawValue
                entry.date = Date()
+               entry.topic = "TBD"
                try viewContext.save()
            } catch {
                print(error.localizedDescription)
@@ -52,7 +53,46 @@ struct ContentView: View {
 
        }
     
+    private func styleForPriority(_ value: String) -> Color {
+            let category = Category(rawValue: value)
+            
+            switch category {
+                case .nightmare:
+                    return Color.red
+            case .neutral:
+                    return Color.blue
+                case .good:
+                    return Color.green
+                default:
+                    return Color.black
+            }
+        }
+    
 //    @FetchRequest(sortDescriptors: []) var dreams: FetchedResults<DreamJournalModel>
+    
+    private func updateEntry(_ entry: Entry) {
+        
+        entry.isFave = !entry.isFave
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func deleteEntry(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let entry = allEntries[index]
+            viewContext.delete(entry)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     var body: some View {
         NavigationView{
@@ -76,9 +116,22 @@ struct ContentView: View {
                 
                 List {
                     ForEach(allEntries) {
-                        entry in Text(entry.title ?? "")
-                    }
+                        entry in HStack {
+                            Circle()
+                                .fill(styleForPriority(entry.emotion!))
+                                .frame(width: 15, height: 15)
+                            Spacer().frame(width: 20)
+                            Text(entry.title ?? "")
+                            Spacer()
+                            Image(systemName: entry.isFave ? "heart.fill": "heart")
+                                .foregroundColor(.red)
+                                .onTapGesture {
+                                    updateEntry(entry)
+                                }
+                        }
+                    }.onDelete(perform: deleteEntry)
                 }
+                Text("help me")
                 
                 Spacer()
             }
@@ -90,6 +143,14 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let persistedContainer = CoreDataManager.shared.persistentContainer
+        ContentView().environment(\.managedObjectContext, persistedContainer.viewContext)
     }
 }
+
+
+//static let viewContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//
+//static var previews: some View {
+//    return ContentView().environment(\.managedObjectContext, viewContext)
+//}
