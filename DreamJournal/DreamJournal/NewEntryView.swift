@@ -31,8 +31,11 @@ extension Category {
     }
 }
 
-struct ContentView: View {
+struct NewEntryView: View {
+    // bool for button to save entry
+    @State private var goToHome: Bool = false
     @State private var title: String = ""
+    @State private var topic: String = ""
     @State private var selectedCategory: Category = .neutral
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -45,7 +48,7 @@ struct ContentView: View {
                entry.title = title
                entry.emotion = selectedCategory.rawValue
                entry.date = Date()
-               entry.topic = "TBD"
+               entry.topic = topic
                try viewContext.save()
            } catch {
                print(error.localizedDescription)
@@ -68,7 +71,6 @@ struct ContentView: View {
             }
         }
     
-//    @FetchRequest(sortDescriptors: []) var dreams: FetchedResults<DreamJournalModel>
     
     private func updateEntry(_ entry: Entry) {
         
@@ -105,8 +107,22 @@ struct ContentView: View {
                     }
                 }.pickerStyle(.segmented)
                 
-                Button("Save"){
-                    saveDream()
+                TextField("Describe your dream...", text: $topic, axis: .vertical)
+                    .lineLimit(10)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                
+                NavigationLink(destination: HomeView(), isActive: $goToHome)
+                {
+                    Button(action: {
+                        saveDream()
+                        goToHome = true
+                    }){
+                        Text("Save")
+                    }
+//                    Button("Save"){
+////                        saveDream()
+//                    }
                 }
                 .padding(10)
                 .frame(maxWidth: .infinity)
@@ -131,20 +147,22 @@ struct ContentView: View {
                         }
                     }.onDelete(perform: deleteEntry)
                 }
-                Text("help me")
                 
                 Spacer()
             }
             .padding()
             .navigationTitle("Sweet Dreams")
         }
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let persistedContainer = CoreDataManager.shared.persistentContainer
-        ContentView().environment(\.managedObjectContext, persistedContainer.viewContext)
+        NavigationView{
+            NewEntryView().environment(\.managedObjectContext, persistedContainer.viewContext)
+        }
     }
 }
 

@@ -14,7 +14,10 @@ struct DreamJournalApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environment(\.managedObjectContext, persistentContainer.viewContext)
+            NavigationView {
+                NewEntryView().environment(\.managedObjectContext, persistentContainer.viewContext)
+            }
+            
         }
     }
 }
