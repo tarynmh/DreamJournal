@@ -25,6 +25,7 @@ struct HomeView: View {
                     .frame(width:300, height: 300)
                 VStack {
                     Divider()
+                    Spacer()
                 }
                 
             }

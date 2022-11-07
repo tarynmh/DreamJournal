@@ -28,11 +28,11 @@ extension Category {
     var title: String {
         switch self {
             case .nightmare:
-                return "Nightmare"
+                return rawValue
             case .neutral:
-                return "Neutral Dream"
+                return rawValue
             case .good:
-                return "Good Dream"
+                return rawValue
         }
     }
 }
