@@ -130,9 +130,8 @@ struct NewEntryView: View {
                         
                     
                     TextField("Describe your dream...", text: $topic, axis: .vertical)
-                        .lineLimit(10)
+                        .lineLimit(10, reservesSpace:true)
                         .textFieldStyle(.roundedBorder)
-                        .padding()
                     
                     NavigationLink(destination: HomeView(), isActive: $goToHome)
                     {
@@ -193,9 +192,8 @@ struct NewEntryView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let persistedContainer = CoreDataManager.shared.persistentContainer
         NavigationView{
-            NewEntryView().environment(\.managedObjectContext, persistedContainer.viewContext)
+            NewEntryView()
         }
     }
 }
