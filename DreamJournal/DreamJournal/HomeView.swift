@@ -16,22 +16,18 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach(allEntries) {
-                        entry in HStack {
-                            Spacer().frame(width: 20)
-                            Text(entry.title ?? "")
-                            Spacer()
-                            Image(systemName: entry.isFave ? "heart.fill": "heart")
-                                .foregroundColor(.red)
-                        }
-                    }
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [CustomColor.Navy, CustomColor.SkyPurple]), startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+                Image("MoonLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:300, height: 300)
+                VStack {
+                    Divider()
                 }
+                
             }
-            .background(
-                    LinearGradient(gradient: Gradient(colors: [.white, .black]), startPoint: .top, endPoint: .bottom)
-                )
 //            .toolbar {
 //                        Button(action: {}) {
 //                            Image(systemName: "plus")

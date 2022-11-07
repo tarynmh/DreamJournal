@@ -115,6 +115,7 @@ struct NewEntryView: View {
                                 .ignoresSafeArea()
                 RoundedRectangle(cornerRadius: 20).fill(CustomColor.LavenderBox)
                 .padding(10)
+        
                 
                 VStack(alignment: .center) {
                     TextField("Name your dream", text: $title)
@@ -125,7 +126,7 @@ struct NewEntryView: View {
                                 .accentColor(.orange)
                         }
                     }.pickerStyle(.segmented)
-                        .background(CustomColor.SkyPurple)
+//                        .background(CustomColor.SkyPurple)
                         
                     
                     TextField("Describe your dream...", text: $topic, axis: .vertical)
@@ -173,16 +174,19 @@ struct NewEntryView: View {
                     Spacer()
                 }
                 .padding(30)
-//                RoundedRectangle(cornerRadius: 20).fill(CustomColor.LavenderBox)
-//                .padding(10)
-//                .frame(width:400, height: 400)
                 .padding()
                 .background(
                         Image("StarsBg")
                     )
+                
 //                .navigationTitle("Sweet Dreams")
             }
+            
         }
+        Image("CloudBg")
+            .resizable()
+            .scaledToFit()
+            .frame(height:300, alignment: .bottom)
         
     }
 }
