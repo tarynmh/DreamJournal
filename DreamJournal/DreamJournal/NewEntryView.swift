@@ -15,9 +15,7 @@ struct CustomColor {
 }
 
 enum Category: String, Identifiable, CaseIterable {
-    var id: UUID {
-        return UUID()
-    }
+    var id: Self { return self }
     
     case nightmare = "Nightmare"
     case neutral = "Neutral Dream"
@@ -26,14 +24,7 @@ enum Category: String, Identifiable, CaseIterable {
 
 extension Category {
     var title: String {
-        switch self {
-            case .nightmare:
-                return rawValue
-            case .neutral:
-                return rawValue
-            case .good:
-                return rawValue
-        }
+        return rawValue
     }
 }
 
@@ -177,15 +168,16 @@ struct NewEntryView: View {
                 .background(
                         Image("StarsBg")
                     )
+//                Image("CloudBg")
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(height:850, alignment: .bottom)
                 
 //                .navigationTitle("Sweet Dreams")
             }
             
         }
-        Image("CloudBg")
-            .resizable()
-            .scaledToFit()
-            .frame(height:300, alignment: .bottom)
+        
         
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E1667E72915E07300A7C511 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1667E62915E07300A7C511 /* HomeView.swift */; };
+		8E1F442829256F5C002655DD /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1F442729256F5C002655DD /* TitleView.swift */; };
 		8E6F89C128F4A21400BEEB20 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F89C028F4A21400BEEB20 /* CoreDataManager.swift */; };
 		8E96FAD128F0D678003BBF92 /* DreamJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96FAD028F0D678003BBF92 /* DreamJournalApp.swift */; };
 		8E96FAD328F0D678003BBF92 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96FAD228F0D678003BBF92 /* NewEntryView.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		8E1667E62915E07300A7C511 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8E1F442729256F5C002655DD /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		8E6F89C028F4A21400BEEB20 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8E96FACD28F0D678003BBF92 /* DreamJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E96FAD028F0D678003BBF92 /* DreamJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamJournalApp.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				8E96FAD028F0D678003BBF92 /* DreamJournalApp.swift */,
 				8E96FAD228F0D678003BBF92 /* NewEntryView.swift */,
 				8E1667E62915E07300A7C511 /* HomeView.swift */,
+				8E1F442729256F5C002655DD /* TitleView.swift */,
 				8E96FAD428F0D692003BBF92 /* Assets.xcassets */,
 				8E96FAD628F0D692003BBF92 /* Preview Content */,
 				8E96FAFA28F0D6E0003BBF92 /* DreamJournalModel.xcdatamodeld */,
@@ -279,6 +282,7 @@
 				8E6F89C128F4A21400BEEB20 /* CoreDataManager.swift in Sources */,
 				8E1667E72915E07300A7C511 /* HomeView.swift in Sources */,
 				8E96FAD128F0D678003BBF92 /* DreamJournalApp.swift in Sources */,
+				8E1F442829256F5C002655DD /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
