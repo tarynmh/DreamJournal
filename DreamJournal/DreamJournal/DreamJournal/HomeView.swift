@@ -18,10 +18,10 @@ struct HomeView: View {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [CustomColor.Navy, CustomColor.SkyPurple]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
-//                Image("MoonLogo")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width:300, height: 300)
+                Image("MoonLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:300, height: 300)
                 VStack {
                     Divider()
                     Spacer()
@@ -55,7 +55,8 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HomeView()
+            let persistedContainer = CoreDataManager.shared.persistentContainer
+            HomeView().environment(\.managedObjectContext, persistedContainer.viewContext)
         }
         
     }

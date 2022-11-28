@@ -190,11 +190,17 @@ struct NewEntryView: View {
     }
 }
 
-struct NewEntryView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            let persistedContainer = CoreDataManager.shared.persistentContainer
-            NewEntryView().environment(\.managedObjectContext, persistedContainer.viewContext)
+            NewEntryView()
         }
     }
 }
+
+
+//static let viewContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//
+//static var previews: some View {
+//    return ContentView().environment(\.managedObjectContext, viewContext)
+//}
