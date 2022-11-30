@@ -10,29 +10,39 @@ import SwiftUI
 struct DreamEntryView: View {
     let card: Card
 
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25, style: .continuous)
                 .fill(CustomColor.LavenderBox)
+//                .padding([.leading, .trailing], 5)
 
             VStack {
                 Text(card.title)
                     .font(.largeTitle)
                     .foregroundColor(.black)
+                    .padding([.leading, .trailing], 5)
 
                 Text(card.topic)
                     .font(.title)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.white)
+                    .padding([.leading, .trailing], 5)
+                
+//                Button("Delete Entry", role: .destructive) {
+//               deleteFunc()
+//                    print("delete WIP")
+//                }
+//                .padding(.top)
             }
             .padding(20)
             .multilineTextAlignment(.center)
         }
-        .frame(width: 450, height: 250)
+        .frame(width: 350, height: 250)
     }
 }
 
-struct DreamEntryView_Previews: PreviewProvider {
-    static var previews: some View {
-        DreamEntryView(card: Card.example)
-    }
-}
+//struct DreamEntryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DreamEntryView(card: Card.example, deleteFunc: Void)
+//    }
+//}

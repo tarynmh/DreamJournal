@@ -12,12 +12,12 @@ struct CustomColor {
     static let Navy = Color("Navy")
     static let SkyPurple = Color("SkyPurple")
     static let LavenderBox = Color("LavenderBox")
+    static let buttonPurple = Color("ButtonPurple")
+    static let buttonPeriwinkle = Color("ButtonPeriwinkle")
 }
 
 enum Category: String, Identifiable, CaseIterable {
-    var id: UUID {
-        return UUID()
-    }
+    var id: Self { return self }
     
     case nightmare = "Nightmare"
     case neutral = "Neutral Dream"
@@ -151,12 +151,11 @@ struct NewEntryView: View {
                 
 //                .navigationTitle("Sweet Dreams")
             }
-            
         }
-        Image("CloudBg")
-            .resizable()
-            .scaledToFit()
-            .frame(height:300, alignment: .bottom)
+//        Image("CloudBg")
+//            .resizable()
+//            .scaledToFit()
+//            .frame(height:300, alignment: .bottom)
         
     }
 }

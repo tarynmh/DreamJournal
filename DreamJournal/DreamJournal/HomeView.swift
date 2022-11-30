@@ -45,29 +45,18 @@ struct HomeView: View {
                 VStack {
                     Divider()
                     Spacer()
-                    List {
-                        ForEach(allEntries) {
-                            entry in HStack {
-//                                Circle()
-//                                    .frame(width: 15, height: 15)
-//                                Spacer().frame(width: 20)
-//                                Text(entry.title ?? "")
-//                                Spacer()
-//                                Image(systemName: entry.isFave ? "heart.fill": "heart")
-//                                    .foregroundColor(.red)
+                    ScrollView{
+                        ForEach(allEntries) { entry in
+                            HStack {
                                 DreamEntryView(card: Card(title: entry.title!, topic: entry.topic!, emotion: entry.emotion!, isFave: entry.isFave, date:entry.date!))
+                                    
                             }
                         }
+                        .onDelete(perform: deleteEntry)
                     }
                 }
                 
             }
-//            .toolbar {
-//                        Button(action: {}) {
-//                            Image(systemName: "plus")
-//                        }
-//                    }
-//            .navigationTitle("Sweet Dreams")
         }
         
     }
