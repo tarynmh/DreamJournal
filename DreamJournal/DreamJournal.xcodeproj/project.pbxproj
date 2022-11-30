@@ -17,6 +17,9 @@
 		8E96FAEC28F0D697003BBF92 /* DreamJournalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96FAEB28F0D697003BBF92 /* DreamJournalUITests.swift */; };
 		8E96FAEE28F0D697003BBF92 /* DreamJournalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96FAED28F0D697003BBF92 /* DreamJournalUITestsLaunchTests.swift */; };
 		8E96FAFC28F0D6E0003BBF92 /* DreamJournalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E96FAFA28F0D6E0003BBF92 /* DreamJournalModel.xcdatamodeld */; };
+		8EB372212935589D003E9340 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB372202935589D003E9340 /* TitleView.swift */; };
+		8EB3722329355B09003E9340 /* DreamEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB3722229355B09003E9340 /* DreamEntryView.swift */; };
+		8EB3722529369480003E9340 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB3722429369480003E9340 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		8E96FAEB28F0D697003BBF92 /* DreamJournalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamJournalUITests.swift; sourceTree = "<group>"; };
 		8E96FAED28F0D697003BBF92 /* DreamJournalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamJournalUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8E96FAFB28F0D6E0003BBF92 /* DreamJournalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamJournalModel.xcdatamodel; sourceTree = "<group>"; };
+		8EB372202935589D003E9340 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		8EB3722229355B09003E9340 /* DreamEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamEntryView.swift; sourceTree = "<group>"; };
+		8EB3722429369480003E9340 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +116,11 @@
 			children = (
 				8E6F89BF28F4A15F00BEEB20 /* Managers */,
 				8E96FAD028F0D678003BBF92 /* DreamJournalApp.swift */,
+				8EB3722229355B09003E9340 /* DreamEntryView.swift */,
 				8E96FAD228F0D678003BBF92 /* NewEntryView.swift */,
 				8E1667E62915E07300A7C511 /* HomeView.swift */,
+				8EB372202935589D003E9340 /* TitleView.swift */,
+				8EB3722429369480003E9340 /* Card.swift */,
 				8E96FAD428F0D692003BBF92 /* Assets.xcassets */,
 				8E96FAD628F0D692003BBF92 /* Preview Content */,
 				8E96FAFA28F0D6E0003BBF92 /* DreamJournalModel.xcdatamodeld */,
@@ -274,11 +283,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB3722329355B09003E9340 /* DreamEntryView.swift in Sources */,
 				8E96FAD328F0D678003BBF92 /* NewEntryView.swift in Sources */,
 				8E96FAFC28F0D6E0003BBF92 /* DreamJournalModel.xcdatamodeld in Sources */,
 				8E6F89C128F4A21400BEEB20 /* CoreDataManager.swift in Sources */,
 				8E1667E72915E07300A7C511 /* HomeView.swift in Sources */,
 				8E96FAD128F0D678003BBF92 /* DreamJournalApp.swift in Sources */,
+				8EB372212935589D003E9340 /* TitleView.swift in Sources */,
+				8EB3722529369480003E9340 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

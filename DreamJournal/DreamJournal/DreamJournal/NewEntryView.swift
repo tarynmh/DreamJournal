@@ -26,7 +26,14 @@ enum Category: String, Identifiable, CaseIterable {
 
 extension Category {
     var title: String {
-        return rawValue
+        switch self {
+            case .nightmare:
+                return rawValue
+            case .neutral:
+                return rawValue
+            case .good:
+                return rawValue
+        }
     }
 }
 
@@ -134,12 +141,34 @@ struct NewEntryView: View {
                         }){
                             Text("Save")
                         }
+                        //                    Button("Save"){
+                        ////                        saveDream()
+                        //                    }
                     }
                     .padding(10)
                     .frame(maxWidth: .infinity)
                     .background(Color.indigo)
                     .foregroundColor(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius:10, style:.continuous))
+                    
+                    
+//                    List {
+//                        ForEach(allEntries) {
+//                            entry in HStack {
+//                                Circle()
+//                                    .fill(styleForPriority(entry.emotion!))
+//                                    .frame(width: 15, height: 15)
+//                                Spacer().frame(width: 20)
+//                                Text(entry.title ?? "")
+//                                Spacer()
+//                                Image(systemName: entry.isFave ? "heart.fill": "heart")
+//                                    .foregroundColor(.red)
+//                                    .onTapGesture {
+//                                        updateEntry(entry)
+//                                    }
+//                            }
+//                        }.onDelete(perform: deleteEntry)
+//                    }
                     
                     Spacer()
                 }
@@ -161,11 +190,17 @@ struct NewEntryView: View {
     }
 }
 
-struct NewEntryView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            let persistedContainer = CoreDataManager.shared.persistentContainer
-            NewEntryView().environment(\.managedObjectContext, persistedContainer.viewContext)
+            NewEntryView()
         }
     }
 }
+
+
+//static let viewContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//
+//static var previews: some View {
+//    return ContentView().environment(\.managedObjectContext, viewContext)
+//}
