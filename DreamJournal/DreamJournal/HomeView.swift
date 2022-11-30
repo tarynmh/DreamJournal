@@ -13,28 +13,49 @@ struct HomeView: View {
     
     @FetchRequest(entity: Entry.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)]) private var allEntries: FetchedResults<Entry>
     
+    private func updateEntry(_ entry: Entry) {
+            
+            entry.isFave = !entry.isFave
+            
+            do {
+                try viewContext.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        private func deleteEntry(at offsets: IndexSet) {
+            offsets.forEach { index in
+                let entry = allEntries[index]
+                viewContext.delete(entry)
+                
+                do {
+                    try viewContext.save()
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    
     var body: some View {
         NavigationView {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [CustomColor.Navy, CustomColor.SkyPurple]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
-//                Image("MoonLogo")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width:300, height: 300)
                 VStack {
                     Divider()
                     Spacer()
                     List {
                         ForEach(allEntries) {
                             entry in HStack {
-                                Circle()
-                                    .frame(width: 15, height: 15)
-                                Spacer().frame(width: 20)
-                                Text(entry.title ?? "")
-                                Spacer()
-                                Image(systemName: entry.isFave ? "heart.fill": "heart")
-                                    .foregroundColor(.red)
+//                                Circle()
+//                                    .frame(width: 15, height: 15)
+//                                Spacer().frame(width: 20)
+//                                Text(entry.title ?? "")
+//                                Spacer()
+//                                Image(systemName: entry.isFave ? "heart.fill": "heart")
+//                                    .foregroundColor(.red)
+                                DreamEntryView(card: Card(title: entry.title!, topic: entry.topic!, emotion: entry.emotion!, isFave: entry.isFave, date:entry.date!))
                             }
                         }
                     }
